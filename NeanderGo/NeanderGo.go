@@ -181,75 +181,149 @@ func decoder() {
 }
 
 func programa() {
-	MEM[0] = NOP
-	MEM[1] = 128
-	MEM[2] = JZ
-	MEM[3] = 140
-	MEM[4] = NOT
-	MEM[5] = ADD
-	MEM[6] = 133
-	MEM[7] = ADD
-	MEM[8] = 133
-	MEM[9] = JZ
-	MEM[10] = 40
-	MEM[11] = 0
-	MEM[12] = 0
-	MEM[13] = 0
-	MEM[14] = 0
-	MEM[15] = 0
-	MEM[128] = 0
-	MEM[129] = 0
-	MEM[130] = 0
-	MEM[131] = 0
-	MEM[132] = 0
-	MEM[133] = 1
-	MEM[134] = 255
-	MEM[135] = 0
+	MEM[0] = LDA
+	MEM[1] = 133 // ZERO
+	MEM[2] = STA
+	MEM[3] = 132 // ERRO
+	MEM[4] = STA
+	MEM[5] = 131 // RESULTADO
+	MEM[6] = LDA
+	MEM[7] = 128 // OPER1
+	MEM[8] = JN
+	MEM[9] = 96 //erro1 // LABEL
+	MEM[10] = LDA
+	MEM[11] = 129 // OPER2
+	MEM[12] = JN
+	MEM[13] = 96 //erro1 // LABEL
+	MEM[14] = LDA
+	MEM[15] = 130 // OPERACAO
+	MEM[16] = ADD
+	MEM[17] = 137 // CONST -1
+	MEM[18] = JZ
+	MEM[19] = 34 //soma 	// LABEL
+	MEM[20] = ADD
+	MEM[21] = 137 // CONST -1
+	MEM[22] = JZ
+	MEM[23] = 42 //subtrai // LABEL
+	MEM[24] = ADD
+	MEM[25] = 137 // CONST -1
+	MEM[26] = JZ
+	MEM[27] = 53 //multiplica // LABEL
+	MEM[28] = ADD
+	MEM[29] = 137 // CONST -1
+	MEM[30] = JZ
+	MEM[31] = 69 //divide // LABEL
+	MEM[32] = JMP
+	MEM[33] = 102 //erro2 // LABEL
 
-	MEM[140] = LDA
-	MEM[141] = 129
-	MEM[142] = JN
-	MEM[143] = 154 //UmMaior
-	MEM[144] = LDA
-	MEM[145] = 130
-	MEM[146] = JN
-	MEM[147] = 158 //SoUmMaior
-	MEM[148] = ADD
-	MEM[149] = 129
-	MEM[150] = STA
-	MEM[151] = 131
-	MEM[152] = JMP
-	//MEM[153] = ??? //NotOver
-	MEM[154] = LDA //UmMaior
-	MEM[155] = 130
-	MEM[156] = JN
-	//MEM[157] = ??? //DoisMaior
-	MEM[158] = ADD //SoUmMaior
-	MEM[159] = 129
-	MEM[160] = STA
-	MEM[161] = 131
-	MEM[162] = JN
-	//MEM[163] = ??? //NotOver
-	MEM[164] = JMP
-	//MEM[165] = ??? //Over
-	/*MEM[166] = 
-	MEM[167] = 
-	MEM[168] = 
-	MEM[169] = 
-	*/
-	/*
-	//OVER
-	LDA
-	133
-	STA
-	132
-	HLT
-	//NOTOVER
-	LDA
-	134
-	STA
-	132
-	HLT*/
+	//SOMA
+	MEM[34] = LDA
+	MEM[35] = 128
+	MEM[36] = ADD
+	MEM[37] = 129
+	MEM[38] = STA
+	MEM[39] = 131
+	MEM[40] = JMP
+	MEM[41] = 120 //fim // LABEL
+	//SUBTRAI
+	MEM[42] = LDA
+	MEM[43] = 129 // OPER2
+	MEM[44] = NOT
+	MEM[45] = ADD
+	MEM[46] = 134 // CONST1
+	MEM[47] = ADD
+	MEM[48] = 128 //OPER1
+	MEM[49] = STA
+	MEM[50] = 131 //RESULTADO
+	MEM[51] = JMP
+	MEM[52] = 120 //fim //LABEL
+	//MULTIPLICA
+	MEM[53] = LDA
+	MEM[54] = 129 // OPER2
+	MEM[55] = JZ
+	MEM[56] = 120 //fim	// LABEL
+	MEM[57] = ADD
+	MEM[58] = 137 // CONST -1
+	MEM[59] = STA
+	MEM[60] = 129 // OPER2
+	MEM[61] = LDA
+	MEM[62] = 131 // RESULTADO
+	MEM[63] = ADD
+	MEM[64] = 128 // OPER1
+	MEM[65] = STA
+	MEM[66] = 131 // RESULTADO
+	MEM[67] = JMP
+	MEM[68] = 53 // MULTIPLICA
+	//DIVIDE
+	MEM[69] = LDA
+	MEM[70] = 129 // OPER2
+	MEM[71] = JZ
+	MEM[72] = 108 //erro4	// LABEL
+	MEM[73] = NOT
+	MEM[74] = ADD
+	MEM[75] = 134 // CONST1
+	MEM[76] = STA
+	MEM[77] = 129 // OPER2
+	//LACOD
+	MEM[78] = LDA
+	MEM[79] = 128 // OPER1
+	MEM[80] = JZ
+	MEM[81] = 120 //fim	// LABEL
+	MEM[82] = JN
+	MEM[83] = 114 //subum	// LABEL
+	MEM[84] = ADD
+	MEM[85] = 129 // OPER2
+	MEM[86] = STA
+	MEM[87] = 128 // OPER1
+	MEM[88] = LDA
+	MEM[89] = 131 // RESULTADO
+	MEM[90] = ADD
+	MEM[91] = 134 // CONST1
+	MEM[92] = STA
+	MEM[93] = 131 // RESULTADO
+	MEM[94] = JMP
+	MEM[95] = 78 // LACOD
+	//ERRO1
+	MEM[96] = LDA
+	MEM[97] = 134 // CONST1
+	MEM[98] = STA
+	MEM[99] = 132 // ERRO
+	MEM[100] = JMP
+	MEM[101] = 120 // FIM
+	//ERRO2
+	MEM[102] = LDA
+	MEM[103] = 135 // CONST2
+	MEM[104] = STA
+	MEM[105] = 132 // ERRO
+	MEM[106] = JMP
+	MEM[107] = 120 // FIM
+	//ERRO4
+	MEM[108] = LDA
+	MEM[109] = 136 // CONST4
+	MEM[110] = STA
+	MEM[111] = 132 // ERRO
+	MEM[112] = JMP
+	MEM[113] = 120 // FIM
+	//SUBUM
+	MEM[114] = LDA
+	MEM[115] = 131 // RESULT
+	MEM[116] = ADD
+	MEM[117] = 137 // CONST -1
+	MEM[118] = STA
+	MEM[119] = 131 // RESULT
+	//FIM
+	MEM[120] = HLT
+
+	MEM[128] = 47  // OPER1
+	MEM[129] = 3   // OPER2
+	MEM[130] = 3   // OPERACAO
+	MEM[131] = 0   // RESULTADO
+	MEM[132] = 0   // ERRO
+	MEM[133] = 0   // CONST 0
+	MEM[134] = 1   // CONST 1
+	MEM[135] = 2   // CONST 2
+	MEM[136] = 4   // CONST 4
+	MEM[137] = 255 // CONST -1
 }
 
 func main() {
@@ -427,4 +501,77 @@ func main() {
 	MEM[147] = 104
 	MEM[148] = JMP
 	MEM[149] = 122
+}*/
+
+/*
+func programa() {
+	MEM[0] = NOP
+	MEM[1] = 128
+	MEM[2] = JZ
+	MEM[3] = 140
+	MEM[4] = NOT
+	MEM[5] = ADD
+	MEM[6] = 133
+	MEM[7] = ADD
+	MEM[8] = 133
+	MEM[9] = JZ
+	MEM[10] = 40
+	MEM[11] = 0
+	MEM[12] = 0
+	MEM[13] = 0
+	MEM[14] = 0
+	MEM[15] = 0
+	MEM[128] = 0
+	MEM[129] = 0
+	MEM[130] = 0
+	MEM[131] = 0
+	MEM[132] = 0
+	MEM[133] = 1
+	MEM[134] = 255
+	MEM[135] = 0
+
+	MEM[140] = LDA
+	MEM[141] = 129
+	MEM[142] = JN
+	MEM[143] = 154 //UmMaior
+	MEM[144] = LDA
+	MEM[145] = 130
+	MEM[146] = JN
+	MEM[147] = 158 //SoUmMaior
+	MEM[148] = ADD
+	MEM[149] = 129
+	MEM[150] = STA
+	MEM[151] = 131
+	MEM[152] = JMP
+	//MEM[153] = ??? //NotOver
+	MEM[154] = LDA //UmMaior
+	MEM[155] = 130
+	MEM[156] = JN
+	//MEM[157] = ??? //DoisMaior
+	MEM[158] = ADD //SoUmMaior
+	MEM[159] = 129
+	MEM[160] = STA
+	MEM[161] = 131
+	MEM[162] = JN
+	//MEM[163] = ??? //NotOver
+	MEM[164] = JMP
+	//MEM[165] = ??? //Over
+	/*MEM[166] =
+	MEM[167] =
+	MEM[168] =
+	MEM[169] =
+*/
+/*
+	//OVER
+	LDA
+	133
+	STA
+	132
+	HLT
+	//NOTOVER
+	LDA
+	134
+	STA
+	132
+	HLT
 }*/
